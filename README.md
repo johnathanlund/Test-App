@@ -1,3 +1,7 @@
+This Test-App is created for the purpose of testing different techniques, with a basic app already created.
+All testing will me done on other branches. This branch will only have one master branch save for the Readme file.
+
+
 # TestApp
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
