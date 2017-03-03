@@ -8,7 +8,7 @@ import { Http, Response } from '@angular/http';
 import "rxjs/add/operator/do";
 //import the map function to be used with the http library
 import "rxjs/add/operator/map";
-const URL = 'http://localhost:8000/upload';
+const URL = 'http://localhost:8000/';
 
 //create the component properties
 @Component({
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     //overide the onCompleteItem property of the uploader so we are
     //able to deal with the server response.
       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-            console.log("ImageUpload:uploaded:", item, status, response);
+            console.log("ImageUpload:uploaded:", item, " Thats the item. ", status, " Thats the status. ", response, " THats the response.", item.file.name );
         };
     }
     //declare a constroctur, so we can pass in some properties to the class, which can be    //accessed using the this variable
@@ -56,9 +56,12 @@ export class AppComponent implements OnInit {
                 .post(URL, formData).map((res:Response) => res.json()).subscribe(
                 //map the success function and alert the response
                  (success) => {
-                         alert(success._body);
+                         alert(success._body + "Formdata is = to :  " + JSON.stringify(formData));
                 },
-                (error) => alert(error))
+                (error) => {
+                  console.log("error has occured, FormData is showing as:  " + JSON.stringify(formData));
+                  alert(error + "  Formdata is = to :  " + JSON.stringify(formData));
+                })
           }
        }
 }
