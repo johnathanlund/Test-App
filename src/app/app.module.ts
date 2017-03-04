@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { FileSelectDirective } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
+import { ImagePreview } from './directives/image-preview.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    ImagePreview
   ],
   imports: [
     BrowserModule,

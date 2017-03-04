@@ -5,6 +5,17 @@
 
 <!-- File input for the file-upload plugin, with special ng2-file-upload directive called ng2FileSelect -->
 <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+<div *ngFor="let item of uploader.queue" class="media">
+    <div class="media-left">
+        <p>Image Preview</p>
+        <img src="" imgPreview [image]="item?._file" class="media-object" />
+    </div>
+    <div class="media-body">
+        <p>{{ item?.file?.name }}</p>
+    </div>
+</div>
+
 <!-- button to trigger the file upload when submitted -->
 <button type="button" class="btn btn-success btn-s"
       (click)="uploader.uploadAll()"
