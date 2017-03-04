@@ -27,7 +27,10 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
     //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
-      this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
+      this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false;
+        console.log('In .onAfterAddingFile, jsonof file is:  ' + file.file.name);
+        console.log('Json of file.file is: ' + JSON.stringify(file.file))
+      };
     //overide the onCompleteItem property of the uploader so we are
     //able to deal with the server response.
       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
