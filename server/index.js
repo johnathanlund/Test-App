@@ -46,7 +46,7 @@ app.post('/', function (req, res, next) {
         console.log('Past the upload If section.');
        // No error occured.
         path = req.file.path;
-        return res.send("Upload Completed for "+path);
+        return res.send("Upload Completed for "+ req.file.filename);
   });
 })
 

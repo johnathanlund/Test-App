@@ -13,22 +13,22 @@ const URL = 'http://localhost:8000/';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    //declare a property called fileuploader and assign it to an instance of a new fileUploader.
-    //pass in the Url to be uploaded to, and pass the itemAlais, which would be the name of the //file input when sending the post request.
-    public uploader:FileUploader = new FileUploader(
-      {url: URL, itemAlias: 'photo'});
-    //This is the default title property created by the angular cli. Its responsible for the app works
-    title = 'app works!';
+  //declare a property called fileuploader and assign it to an instance of a new fileUploader.
+ //pass in the Url to be uploaded to, and pass the itemAlais, which would be the name of the //file input when sending the post request.
+ public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+ //This is the default title property created by the angular cli. Its responsible for the app works
+ title = 'app works!';
 
-    ngOnInit() {
-       //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
-       this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
-       //overide the onCompleteItem property of the uploader so we are
-       //able to deal with the server response.
-       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-            console.log("ImageUpload:uploaded:", item, status, response);
-            console.log("The file name is: ", item.file.name);
-            console.log("The json for the resonse is:  " + response);
-        };
-    }
+ ngOnInit() {
+ //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
+   this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false;
+     console.log('In .onAfterAddingFile, jsonof file is:  ' + file.file.name);
+     console.log('Json of file.file is: ' + JSON.stringify(file.file))
+   };
+ //overide the onCompleteItem property of the uploader so we are
+ //able to deal with the server response.
+   this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+         console.log("ImageUpload:uploaded:", item, " Thats the item. ", status, " Thats the status. ", response, " THats the response.", item.file.name );
+     };
+ }
 }
