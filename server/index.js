@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 //require multer for the file uploads
 var multer = require('multer');
 // set the directory for the uploads to the uploaded to
-var DIR = '../uploads/';
+var DIR = './uploads/';
 //define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
 var upload = multer({dest: DIR}).single('photo');
 
@@ -43,10 +43,16 @@ app.post('/', function (req, res, next) {
           console.log(err);
           return res.status(422).send("an Error occured")
         }
-        console.log('Past the upload If section.');
+        // console.log('Past the upload If section.');
+        // console.log('Still past the If section.');
+        console.log('This is the req:  ' + req);
+        console.log('This is the req.file:  ' + req.file);
+        console.log('This is the json of req.file:   ' + JSON.stringify(req.file));
+
        // No error occured.
         path = req.file.path;
-        return res.send("Upload Completed for "+ req.file.filename);
+        console.log('Past the 2nd path line.');
+        return res.send("Upload TOTALLY Completed for "+ req.file.originalname);
   });
 })
 
