@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 //require multer for the file uploads
 var multer = require('multer');
 // set the directory for the uploads to the uploaded to
-var DIR = './uploads/';
+var DIR = '../uploads/';
 //define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
 var upload = multer({dest: DIR}).single('photo');
 
@@ -32,6 +32,7 @@ app.get('/', function(req, res, next) {
 
 //our file upload function.
 app.post('/', function (req, res, next) {
+    console.log("In the Server Post function.");
      var path = '';
      upload(req, res, function (err) {
         if (err) {
