@@ -1,5 +1,2 @@
-<h1>
-  {{title}}
-</h1>
-
-<h5>On Master Branch</h5>
+<input type="file" (change)="uploadFile($event)">
+ <span (click)="uploading==false?upload():null" [ngClass]="{'upload-disable': uploading==true}">{{uploadingMessage}}</span>
