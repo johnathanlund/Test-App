@@ -33,13 +33,17 @@ app.get('/', function(req, res, next) {
 //our file upload function.
 app.post('/', function (req, res, next) {
     console.log("In the Server Post function.");
+    console.log("Still in the Server Post function.");
      var path = '';
+     console.log('Past the path.');
      upload(req, res, function (err) {
+       console.log('Inside the upload function within Post.');
         if (err) {
           // An error occurred when uploading
           console.log(err);
           return res.status(422).send("an Error occured")
         }
+        console.log('Past the upload If section.');
        // No error occured.
         path = req.file.path;
         return res.send("Upload Completed for "+path);
