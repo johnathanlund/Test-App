@@ -4,12 +4,14 @@
 </h1>
 
 <!-- File input for the file-upload plugin, with special ng2-file-upload directive called ng2FileSelect -->
-<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
-
+<input type="file" name="photo" ng2FileSelect [uploader]="uploader"/>
+<!-- <input type="file" name="photo" ng2FileSelect [uploader]="uploader" (change)="fileEvent($event)"/> -->
+<p>Items in the queue: {{uploader.queue.length}}</p>
 <div *ngFor="let item of uploader.queue" class="media">
     <div class="media-left">
         <p>Image Preview</p>
         <img src="" imgPreview [image]="item?._file" class="media-object" />
+        <button type="button" (click)="cancelUploaderItem(item)">Cancel</button>
     </div>
     <div class="media-body">
         <p>{{ item?.file?.name }}</p>
@@ -22,3 +24,4 @@
       [disabled]="!uploader.getNotUploadedItems().length">
       Upload with ng-2 file uploader
 </button>
+<button type="button" (click)="cancelUploaderAll()">Cancel All</button>
